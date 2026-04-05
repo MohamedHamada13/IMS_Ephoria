@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-edit-product',
   templateUrl: './product-edit.html',
   styleUrl: './product-edit.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditProduct {
   private readonly route = inject(ActivatedRoute);

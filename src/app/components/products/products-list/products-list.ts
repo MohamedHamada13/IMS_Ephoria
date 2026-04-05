@@ -4,6 +4,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-products-list',
   templateUrl: './products-list.html',
   styleUrl: './products-list.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsList {}
