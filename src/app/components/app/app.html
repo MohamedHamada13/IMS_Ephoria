@@ -1,1 +1,31 @@
-<router-outlet />
+<div class="container-fluid min-vh-100 d-flex flex-column">
+	<header class="row">
+		<div class="col-12">
+			<nav class="navbar navbar-expand navbar-dark bg-dark">
+				<div class="container-fluid">
+					<span class="navbar-brand mb-0 h1">IMS Dashboard</span>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div class="row flex-grow-1">
+		<nav class="col-12 col-md-3 col-lg-2 bg-light border-end py-3">
+			<div class="nav flex-column nav-pills">
+				<a
+					class="nav-link"
+					routerLink="/products"
+					routerLinkActive="active"
+					[routerLinkActiveOptions]="{ exact: true }"
+					>Products</a>
+				<a class="nav-link" routerLink="/products/add" routerLinkActive="active">
+					Add Product
+				</a>
+			</div>
+		</nav>
+
+		<main class="col-12 col-md-9 col-lg-10 py-3">
+			<router-outlet />
+		</main>
+	</div>
+</div>
