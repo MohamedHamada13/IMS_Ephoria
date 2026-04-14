@@ -4,6 +4,9 @@
 
     <div class="d-flex gap-2">
       @if (auth.isAuthenticated()) {
+        <span class="navbar-text text-light me-2">
+          Hi, {{ auth.displayName() ?? 'User' }}
+        </span>
         <button type="button" class="btn btn-outline-light" (click)="logout()">
           Logout
         </button>
@@ -12,7 +15,7 @@
           Login
         </a>
         <a
-          class="btn btn-warning"
+          class="btn btn-primary"
           routerLink="/register"
           routerLinkActive="active"
         >
