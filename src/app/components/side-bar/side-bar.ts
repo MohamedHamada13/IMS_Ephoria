@@ -11,4 +11,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideBar {}
+export class SideBar {
+}
+
+

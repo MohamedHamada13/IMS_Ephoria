@@ -2,10 +2,16 @@
   <app-nav-bar></app-nav-bar>
 
   <div class="row flex-grow-1 g-0">
-    <app-side-bar></app-side-bar>
+    @if (showSideBar()) {
+      <app-side-bar></app-side-bar>
 
-    <main class="col-12 col-md-9 col-lg-10 py-3">
-      <router-outlet />
-    </main>
+      <main class="col-12 col-md-9 col-lg-10 py-3">
+        <router-outlet />
+      </main>
+    } @else {
+      <main class="col-12 py-3 px-3">
+        <router-outlet />
+      </main>
+    }
   </div>
 </div>
