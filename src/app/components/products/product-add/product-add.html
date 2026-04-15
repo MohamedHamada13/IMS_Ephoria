@@ -1,8 +1,78 @@
 <div class="container-fluid">
-  <h2 class="h4 mb-3">Add Product</h2>
-  <div class="card">
-    <div class="card-body">
-      <p class="mb-0">Add product page.</p>
+  <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+    <div class="d-flex align-items-center justify-content-between mb-3 pe-2">
+      <h2 class="h4 mb-0">Add Product</h2>
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="isSaving() || productForm.invalid"
+        [attr.aria-busy]="isSaving()"
+      >
+        Add product
+      </button>
     </div>
-  </div>
+
+    @if (errorMessage()) {
+      <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+    }
+
+    @if (createdProduct()) {
+      <div class="alert alert-success" role="status">
+        Product <strong>{{ createdProduct()!.name }}</strong> created successfully.
+      </div>
+    }
+
+    <div class="card">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="productName" class="form-label">Name</label>
+            <input
+              id="productName"
+              class="form-control"
+              type="text"
+              formControlName="name"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="col-md-3">
+            <label for="productPrice" class="form-label">Price</label>
+            <input
+              id="productPrice"
+              class="form-control"
+              type="number"
+              formControlName="price"
+              min="0"
+              step="0.01"
+            />
+          </div>
+
+          <div class="col-md-3">
+            <label for="productQuantity" class="form-label">Quantity</label>
+            <input
+              id="productQuantity"
+              class="form-control"
+              type="number"
+              formControlName="quantity"
+              min="0"
+              step="1"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label for="productCategory" class="form-label">Category</label>
+            <input
+              id="productCategory"
+              class="form-control"
+              type="text"
+              formControlName="category"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

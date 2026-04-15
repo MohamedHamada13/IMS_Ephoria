@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 import type { IProduct } from '../models/IProduct';
 
@@ -9,7 +10,7 @@ import type { IProduct } from '../models/IProduct';
 })
 export class ProductService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'http://localhost:3000/api/products';
+  private readonly baseUrl = `${environment.apiUrl}/products`;
 
   getAllProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.baseUrl);
@@ -19,7 +20,7 @@ export class ProductService {
     return this.http.get<IProduct>(`${this.baseUrl}/${id}`);
   }
 
-  addProduct(product: IProduct): Observable<IProduct> {
+  addProduct(product: Omit<IProduct, 'id'>): Observable<IProduct> {
     return this.http.post<IProduct>(this.baseUrl, product);
   }
 
@@ -28,6 +29,6 @@ export class ProductService {
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/products/${id}`);
   }
 }
